@@ -1,6 +1,11 @@
 datatype rectangle = Rect of int * int * int * int
 
-(*  emptyQtree e
+(*
+emptyQtree e
+TYPE:
+PRE:
+POST
+EXAMPLE
     
 *)
 
