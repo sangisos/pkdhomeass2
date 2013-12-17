@@ -1,18 +1,30 @@
+(*
+DATATYPE REPRESENTATION:
+INVARIANT REPRESENTATION:
 
+
+*)
 datatype rectangle = Rect of int * int * int * int
 
+(*
+DATATYPE REPRESENTATION:
+INVARIANT REPRESENTATION:
+
+
+*)
 datatype quadTree = EmptyQuadTree |
 	            Qt of rectangle * rectangle list * rectangle list *
 			  quadTree * quadTree * quadTree * quadTree
+
 (*
 emptyQtree e
-TYPE:
-PRE:
-POST
-EXAMPLE
+TYPE: rectangle -> quadTree
+PRE: true
+POST:
+EXAMPLE:
     
 *)
-(*fun emptyQtree e = Qt(e,[],[],); *)
+fun emptyQtree e = Qt(e,[],[],EmptyQuadTree,EmptyQuadTree,EmptyQuadTree,EmptyQuadTree);
 
 (* 
 insert (q, r)
