@@ -1,7 +1,7 @@
 (*
 DATATYPE REPRESENTATION:
 INVARIANT REPRESENTATION:
-
+taken from Assignment2.pdf 
 
 *)
 datatype rectangle = Rect of int * int * int * int
