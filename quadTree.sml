@@ -1,5 +1,9 @@
+
 datatype rectangle = Rect of int * int * int * int
 
+datatype quadTree = EmptyQuadTree |
+	            Qt of rectangle * rectangle list * rectangle list *
+			  quadTree * quadTree * quadTree * quadTree
 (*
 emptyQtree e
 TYPE:
