@@ -80,3 +80,4 @@ EXAMPLE:
 
 *)
 
+fun query (q:quadTree, x:int, y:int):rectangle list = [];
