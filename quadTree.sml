@@ -8,7 +8,7 @@ POST
 EXAMPLE
     
 *)
-
+(*fun emptyQtree e = Qt(e,[],[],); *)
 
 (* 
 insert (q, r)
