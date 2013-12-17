@@ -1,6 +1,17 @@
+(*
+DATATYPE REPRESENTATION:
+INVARIANT REPRESENTATION:
 
+
+*)
 datatype rectangle = Rect of int * int * int * int
 
+(*
+DATATYPE REPRESENTATION:
+INVARIANT REPRESENTATION:
+
+
+*)
 datatype quadTree = EmptyQuadTree |
 	            Qt of rectangle * rectangle list * rectangle list *
 			  quadTree * quadTree * quadTree * quadTree
@@ -8,15 +19,16 @@ exception InvalidRectangle;
 exception ArgumentOutOfBounds of string;
 exception ArgumentException of string;
 fun validRectangle(Rect(left,top,right,bottom)) = left<right andalso bottom<top;
+
 (*
 emptyQtree e
-TYPE:
-PRE:
-POST
-EXAMPLE
+TYPE: rectangle -> quadTree
+PRE: true
+POST:
+EXAMPLE:
     
 *)
-(*fun emptyQtree e = Qt(e,[],[],); *)
+fun emptyQtree e = Qt(e,[],[],EmptyQuadTree,EmptyQuadTree,EmptyQuadTree,EmptyQuadTree);
 
 (* 
 insert (q, r)
