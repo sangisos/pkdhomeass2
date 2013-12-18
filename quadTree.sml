@@ -58,17 +58,38 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 	    Qt(e, vertical, rectangle::horizontal, TL, TR, BL, BR)
 	else if rectRight < centerx then
 	    (if rectTop < centery then
-		Qt(e, vertical, horizontal, TL, TR, insert( if BL = EmptyQuadTree then (emptyQtree(Rect(left,centery,centerx,bottom))) else BL, rectangle), BR)
+		Qt(e, vertical, horizontal, TL, TR, insert(
+			if BL = EmptyQuadTree then
+			    (emptyQtree(Rect(left,centery,centerx,bottom)))
+			else
+			    BL, rectangle),
+		   BR)
 	    else
-		Qt(e, vertical, horizontal, insert( if TL = EmptyQuadTree then (emptyQtree(Rect(left,top,centerx,centery))) else TL, rectangle), TR, BL, BR))
+		Qt(e, vertical, horizontal, insert( 
+			if TL = EmptyQuadTree then
+			    (emptyQtree(Rect(left,top,centerx,centery)))
+			else
+			    TL, rectangle),
+		   TR, BL, BR))
 	else
 	    (if rectBottom >= centery then
-		Qt(e, vertical, horizontal, TL, insert( if TR = EmptyQuadTree then (emptyQtree(Rect(centerx,top,right,centery))) else TR, rectangle), BL, BR)
+		Qt(e, vertical, horizontal, TL, insert(
+			if TR = EmptyQuadTree then
+			    (emptyQtree(Rect(centerx,top,right,centery)))
+			else
+			    TR, rectangle), 
+		   BL, BR)
 	    else 
-		Qt(e, vertical, horizontal, TL, TR, BL, insert(if BR = EmptyQuadTree then (emptyQtree(Rect(centerx,centery,right,bottom))) else BR, rectangle)))
+		Qt(e, vertical, horizontal, TL, TR, BL, insert(
+			if BR = EmptyQuadTree then
+			    (emptyQtree(Rect(centerx,centery,right,bottom)))
+			else
+			    BR, rectangle)
+		   ))
     end;
 
-insert(Qt(Rect(0,16,16,0), [], [], EmptyQuadTree, EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), Rect(6,7,7,6));
+insert(Qt(Rect(0,16,16,0), [], [], EmptyQuadTree, EmptyQuadTree,
+	  EmptyQuadTree, EmptyQuadTree), Rect(6,7,7,6));
 
 (*
 query (q, x, y)
