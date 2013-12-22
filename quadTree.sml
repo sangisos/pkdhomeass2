@@ -51,7 +51,16 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 	else if
 	   rectLeft < left orelse rectTop >= top orelse
 	   rectRight >= right orelse rectBottom < bottom then
-	    raise ArgumentOutOfBounds("Rectangle not in extent")
+	    raise ArgumentOutOfBounds("Rectangle (" ^
+				      Int.toString(rectLeft) ^ "," ^
+				      Int.toString(rectTop) ^ "," ^
+				      Int.toString(rectRight) ^ "," ^
+				      Int.toString(rectBottom) ^
+				      ") not in extent (" ^
+				      Int.toString(left) ^ "," ^
+				      Int.toString(top) ^ "," ^
+				      Int.toString(right) ^ "," ^
+				      Int.toString(bottom) ^ ")")
 	else if rectTop >= centery andalso rectBottom < centery then
 	    Qt(e, rectangle::vertical, horizontal, TL, TR, BL, BR)
 	else if rectRight >= centerx andalso rectLeft < centerx then
