@@ -61,12 +61,12 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 				      Int.toString(top) ^ "," ^
 				      Int.toString(right) ^ "," ^
 				      Int.toString(bottom) ^ ")")
-	else if rectTop >= centery andalso rectBottom < centery then
+	else if rectTop > centery andalso rectBottom <= centery then
 	    Qt(e, rectangle::vertical, horizontal, TL, TR, BL, BR)
-	else if rectRight >= centerx andalso rectLeft < centerx then
+	else if rectRight > centerx andalso rectLeft <= centerx then
 	    Qt(e, vertical, rectangle::horizontal, TL, TR, BL, BR)
-	else if rectRight < centerx then
-	    (if rectTop < centery then
+	else if rectRight <= centerx then
+	    (if rectTop <= centery then
 		Qt(e, vertical, horizontal, TL, TR, insert(
 			if BL = EmptyQuadTree then
 			    (emptyQtree(Rect(left,centery,centerx,bottom)))
@@ -76,7 +76,7 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 	    else
 		Qt(e, vertical, horizontal, insert( 
 			if TL = EmptyQuadTree then
-			    (emptyQtree(Rect(left,top,centerx,centery)))
+			    (emptyQtree(Rect(left,top,centerx,centery+1)))
 			else
 			    TL, rectangle),
 		   TR, BL, BR))
@@ -84,14 +84,14 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 	    (if rectBottom >= centery then
 		Qt(e, vertical, horizontal, TL, insert(
 			if TR = EmptyQuadTree then
-			    (emptyQtree(Rect(centerx,top,right,centery)))
+			    (emptyQtree(Rect(centerx+1,top,right,centery+1)))
 			else
 			    TR, rectangle), 
 		   BL, BR)
 	    else 
 		Qt(e, vertical, horizontal, TL, TR, BL, insert(
 			if BR = EmptyQuadTree then
-			    (emptyQtree(Rect(centerx,centery,right,bottom)))
+			    (emptyQtree(Rect(centerx+1,centery,right,bottom)))
 			else
 			    BR, rectangle)
 		   ))
