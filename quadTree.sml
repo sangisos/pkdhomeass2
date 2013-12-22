@@ -110,4 +110,28 @@ EXAMPLE:
 
 *)
 
-fun query (q:quadTree, x:int, y:int):rectangle list = [];
+fun query (EmptyQuadTree, _, _) = []
+  | query (Qt(Rect(left,top,right,bottom), vertical, horizontal, TL, TR, BL, BR), x, y) =
+    let
+	fun pointInRect (Rect(rl,rt,rr,rb)) = rl <= x andalso x < rr andalso rb <= y andalso y < rt
+	val centerx = (left+right) div 2
+	val centery = (bottom+top) div 2
+    in
+	(List.filter (pointInRect) (vertical @ horizontal)) @
+	(if x < centerx then
+	    (if y < centery then
+		query(BL,x,y)
+	    else if centery < y then
+		query(TL,x,y)
+	    else
+		[])
+	else if centerx < x then
+	    (if y < centery then
+		query(BR,x,y)
+	    else if centery < y then
+		query(TR,x,y)
+	    else
+		[])
+	else
+	    [])
+    end;
