@@ -49,8 +49,8 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 	if not (validRectangle(rectangle)) then
 	    raise InvalidRectangle
 	else if
-	   rectLeft < left orelse rectTop >= top orelse
-	   rectRight >= right orelse rectBottom < bottom then
+	   rectLeft < left orelse rectTop > top orelse
+	   rectRight > right orelse rectBottom < bottom then
 	    raise ArgumentOutOfBounds("Rectangle (" ^
 				      Int.toString(rectLeft) ^ "," ^
 				      Int.toString(rectTop) ^ "," ^
