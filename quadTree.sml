@@ -61,9 +61,9 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 				      Int.toString(top) ^ "," ^
 				      Int.toString(right) ^ "," ^
 				      Int.toString(bottom) ^ ")")
-	else if rectTop > centery andalso rectBottom <= centery then
+	else if rectLeft <= centerx andalso centerx < rectRight then
 	    Qt(e, rectangle::vertical, horizontal, TL, TR, BL, BR)
-	else if rectRight > centerx andalso rectLeft <= centerx then
+	else if rectBottom <= centery andalso centery < rectTop then
 	    Qt(e, vertical, rectangle::horizontal, TL, TR, BL, BR)
 	else if rectRight <= centerx then
 	    (if rectTop <= centery then
