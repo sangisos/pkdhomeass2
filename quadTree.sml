@@ -97,9 +97,6 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 		   ))
     end;
 
-insert(Qt(Rect(0,16,16,0), [], [], EmptyQuadTree, EmptyQuadTree,
-	  EmptyQuadTree, EmptyQuadTree), Rect(6,7,7,6));
-
 (*
 query (q, x, y)
 TYPE:
