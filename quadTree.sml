@@ -32,7 +32,7 @@ fun emptyQtree e = Qt(e,[],[],EmptyQuadTree,EmptyQuadTree,EmptyQuadTree,EmptyQua
 
 (* 
 insert (q, r)
-TYPE:
+TYPE: quadTree * rectangle -> quadTree
 PRE:
 POST
 EXAMPLE
@@ -102,7 +102,7 @@ insert(Qt(Rect(0,16,16,0), [], [], EmptyQuadTree, EmptyQuadTree,
 
 (*
 query (q, x, y)
-TYPE:
+TYPE: quadTree * int * int -> rectangle list
 PRE:
 POST:
 EXAMPLE:
