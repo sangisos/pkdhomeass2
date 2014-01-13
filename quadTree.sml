@@ -1,6 +1,12 @@
 (*
-DATATYPE REPRESENTATION:
-INVARIANT REPRESENTATION:
+DATATYPE REPRESENTATION: Represents a rectangle by four coordinates. 
+						 Coordinates represents in order:
+						 left side's x-coordinate, top side's y coordinate,
+						 right side's x-coordinate, bottom 
+						 side's y-coordinate.
+INVARIANT REPRESENTATION: Coordinates must be of type int. Coordinates' must 
+						  have the following relation: 
+						  bottom < top and left < right
 taken from Assignment2.pdf 
 
 *)
