@@ -30,8 +30,10 @@ fun validRectangle(Rect(left,top,right,bottom)) = left<right andalso bottom<top;
 emptyQtree e
 TYPE: rectangle -> quadTree
 PRE: true
-POST:
-EXAMPLE:
+POST: A quadTree with extent e
+EXAMPLE: emptyQtree (Rect(2,4,4,2)) = 
+		 Qt(Rect(2,4,4,2), [], [], EmptyQuadTree, EmptyQuadTree, EmptyQuadTree,
+		 EmptyQuadTree,)
     
 *)
 fun emptyQtree e = Qt(e,[],[],EmptyQuadTree,EmptyQuadTree,EmptyQuadTree,EmptyQuadTree);
