@@ -41,10 +41,15 @@ fun emptyQtree e = Qt(e,[],[],EmptyQuadTree,EmptyQuadTree,EmptyQuadTree,EmptyQua
 (* 
 insert (q, r)
 TYPE: quadTree * rectangle -> quadTree
-PRE:
-POST
-EXAMPLE
-
+PRE: true
+POST: The quadTree q with the rectangle r inserted at the correct location within it.
+EXAMPLE: insert(Qt(Rect(0,16,16,0), [], [], EmptyQuadTree, EmptyQuadTree,
+	  	 EmptyQuadTree, EmptyQuadTree), Rect(6,7,7,6)) =
+	  	 Qt(Rect (0, 16, 16, 0), [], [], EmptyQuadTree, EmptyQuadTree,
+     	 	Qt(Rect (0, 8, 8, 0), [], [], EmptyQuadTree,
+    	 		Qt(Rect (5, 8, 8, 5), [Rect (6, 7, 7, 6)], [], EmptyQuadTree,
+         		EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), EmptyQuadTree,
+       			EmptyQuadTree), EmptyQuadTree)
 *)
 fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called with empty quad tree.")
   | insert ( q as Qt(e, vertical, horizontal, TL, TR, BL, BR), rectangle) =
