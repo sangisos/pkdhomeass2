@@ -4,8 +4,8 @@ DATATYPE REPRESENTATION: Represents a rectangle by four coordinates.
 						 left side's x-coordinate, top side's y coordinate,
 						 right side's x-coordinate, bottom 
 						 side's y-coordinate.
-INVARIANT REPRESENTATION: Coordinates must be of type int. Coordinates' must 
-						  have the following relation: 
+INVARIANT REPRESENTATION: Coordinates must be of type int. Coordinates' must
+						  result in the rectangle having the following relation: 
 						  bottom < top and left < right
 taken from Assignment2.pdf 
 
@@ -13,7 +13,7 @@ taken from Assignment2.pdf
 datatype rectangle = Rect of int * int * int * int
 
 (*
-DATATYPE REPRESENTATION:
+DATATYPE REPRESENTATION: Represents a tree with the extent of a rectangle 
 INVARIANT REPRESENTATION:
 
 
