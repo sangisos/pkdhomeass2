@@ -4,17 +4,15 @@ DATATYPE REPRESENTATION: Represents a rectangle by four coordinates.
 						 left side's x-coordinate, top side's y coordinate,
 						 right side's x-coordinate, bottom 
 						 side's y-coordinate.
-INVARIANT REPRESENTATION: Coordinates must be of type int. Coordinates' must
-						  result in the rectangle having the following relation: 
-						  bottom < top and left < right
+INVARIANT REPRESENTATION: 
 taken from Assignment2.pdf 
 
 *)
 datatype rectangle = Rect of int * int * int * int
 
 (*
-DATATYPE REPRESENTATION: Represents a tree with the extent of a rectangle 
-INVARIANT REPRESENTATION:
+DATATYPE REPRESENTATION: Represents a tree with the extent of a rectangle
+INVARIANT REPRESENTATION: 
 
 
 *)
@@ -24,6 +22,16 @@ datatype quadTree = EmptyQuadTree |
 exception InvalidRectangle;
 exception ArgumentOutOfBounds of string;
 exception ArgumentException of string;
+
+(*
+validRectangle(Rect(a,b,c,d,e))
+TYPE: rectangle -> bool 
+PRE: true
+POST: true if a<c and d<b, else false
+EXAMPLE: validRectangle(Rect(1,8,8,1)) = true
+    
+*)
+
 fun validRectangle(Rect(left,top,right,bottom)) = left<right andalso bottom<top;
 
 (*
