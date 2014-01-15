@@ -55,6 +55,7 @@ EXAMPLE: insert(Qt(Rect(0,16,16,0), [], [], EmptyQuadTree, EmptyQuadTree,
     	 		Qt(Rect (5, 8, 8, 5), [Rect (6, 7, 7, 6)], [], EmptyQuadTree,
          		EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), EmptyQuadTree,
        			EmptyQuadTree), EmptyQuadTree)
+VARIANT:
 *)
 fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called with empty quad tree.")
   | insert ( q as Qt(e, vertical, horizontal, TL, TR, BL, BR), rectangle) =
@@ -125,11 +126,20 @@ PRE: true
 POST: A list of all rectangles in the quadTree q that contain the point (x,y)
 EXAMPLE: query (Qt(Rect(1,50,50,1), [Rect(20,45,45,20)], [Rect(10,20,10,20)], EmptyQuadTree,
 	 	 EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), 25, 40) = [Rect(20,45,45,20)]
+VARIANT: 
 *)
 
 fun query (EmptyQuadTree, _, _) = []
   | query (Qt(Rect(left,top,right,bottom), vertical, horizontal, TL, TR, BL, BR), x, y) =
     let
+    (*
+	pointInRect(a,b,c,d)
+	TYPE: Rect -> bool
+	PRE: true
+	POST: true if the rectangle contains the coordinates x,y used when calling
+		  the query function.
+	EXAMPLE: pointInRect (Rect(1,4,4,1)) = true (given that x=2,y=3)
+    *)
 	fun pointInRect (Rect(rl,rt,rr,rb)) = rl <= x andalso x < rr andalso rb <= y andalso y < rt
 	val centerx = (left+right) div 2
 	val centery = (bottom+top) div 2
