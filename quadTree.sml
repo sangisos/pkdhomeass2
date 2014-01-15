@@ -4,17 +4,16 @@ DATATYPE REPRESENTATION: Represents a rectangle by four coordinates.
 						 left side's x-coordinate, top side's y coordinate,
 						 right side's x-coordinate, bottom 
 						 side's y-coordinate.
-INVARIANT REPRESENTATION: 
-taken from Assignment2.pdf 
+INVARIANT REPRESENTATION: none
+taken from Assignment2.pdf
 
 *)
 datatype rectangle = Rect of int * int * int * int
 
 (*
 DATATYPE REPRESENTATION: Represents a tree with the extent of a rectangle
-INVARIANT REPRESENTATION: 
-
-
+						 at the root.
+INVARIANT REPRESENTATION: none
 *)
 datatype quadTree = EmptyQuadTree |
 	            Qt of rectangle * rectangle list * rectangle list *
@@ -29,7 +28,6 @@ TYPE: rectangle -> bool
 PRE: true
 POST: true if a<c and d<b, else false
 EXAMPLE: validRectangle(Rect(1,8,8,1)) = true
-    
 *)
 
 fun validRectangle(Rect(left,top,right,bottom)) = left<right andalso bottom<top;
@@ -42,7 +40,6 @@ POST: A quadTree with extent e
 EXAMPLE: emptyQtree (Rect(2,4,4,2)) = 
 		 Qt(Rect(2,4,4,2), [], [], EmptyQuadTree, EmptyQuadTree, EmptyQuadTree,
 		 EmptyQuadTree,)
-    
 *)
 fun emptyQtree e = Qt(e,[],[],EmptyQuadTree,EmptyQuadTree,EmptyQuadTree,EmptyQuadTree);
 
