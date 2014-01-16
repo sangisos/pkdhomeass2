@@ -18,6 +18,7 @@ REPRESENTATION CONVENTION: A quadtree with a root containing the extent e and
 						   Qt(e, v, h, TL, TR, BL, BR);
 						   The empty quadtree is represented by EmptyQuadTree.
 REPRESENTATION INVARIANT:  None.
+taken from Assignment2.pdf
 *)
 datatype quadTree = EmptyQuadTree |
 	            Qt of rectangle * rectangle list * rectangle list *
