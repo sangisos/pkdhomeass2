@@ -78,6 +78,11 @@ build/
 *.log
 *.scc
 
+#TeX
+*.log
+*.aux
+*.out
+
 # Visual C++ cache files
 ipch/
 *.aps
