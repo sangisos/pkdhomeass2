@@ -1,7 +1,7 @@
 (*
-REPRESENTATION CONVENTION: A rectangle with sides int left, int top,
-						   int right, int bottom is represented by
-						   Rect(left,top,right,bottom).
+REPRESENTATION CONVENTION: A rectangle with sides left l, top t,
+						   right r and bottom b is represented by
+						   Rect(l, t, r, b).
 REPRESENTATION INVARIANT:  The coordinates must have the following effect on the
 						   rectangle's sides: left<right and bottom<top.
 taken from Assignment2.pdf
