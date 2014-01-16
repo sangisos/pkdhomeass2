@@ -59,7 +59,7 @@ EXAMPLE: insert(Qt(Rect(0,16,16,0), [], [], EmptyQuadTree, EmptyQuadTree,
     	 		Qt(Rect (5, 8, 8, 5), [Rect (6, 7, 7, 6)], [], EmptyQuadTree,
          		EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), EmptyQuadTree,
        			EmptyQuadTree), EmptyQuadTree)
-VARIANT:
+VARIANT: e
 *)
 fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called with empty quad tree.")
   | insert ( q as Qt(e, vertical, horizontal, TL, TR, BL, BR), rectangle) =
@@ -121,13 +121,13 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
     end;
 
 (*
-query (q, x, y)
+query (q as Qt(e, v, h, TL, TR, BL, BR), x, y)
 TYPE: quadTree * int * int -> rectangle list
-PRE: x,y must be inside the extent of q.
+PRE: x,y must be inside the extent e.
 POST: A list of all rectangles in the quadTree q that contain the point (x,y)
 EXAMPLE: query (Qt(Rect(1,50,50,1), [Rect(20,45,45,20)], [Rect(10,20,10,20)], EmptyQuadTree,
 	 	 EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), 25, 40) = [Rect(20,45,45,20)]
-VARIANT: 
+VARIANT: e
 *)
 
 fun query (EmptyQuadTree, _, _) = []
