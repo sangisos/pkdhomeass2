@@ -1,11 +1,11 @@
 (*
-DATATYPE REPRESENTATION: Represents a rectangle by four coordinates. 
-						 Coordinates represents in order:
-						 left side's x-coordinate, top side's y coordinate,
-						 right side's x-coordinate, bottom 
-						 side's y-coordinate.
-INVARIANT REPRESENTATION: The coordinates must have the following effect on the
-						  rectangle's sides: left<right and bottom<top.
+REPRESENTATION CONVENTION: Represents a rectangle by four coordinates. 
+						   Coordinates represents in order:
+						   left side's x-coordinate, top side's y coordinate,
+						   right side's x-coordinate, bottom 
+						   side's y-coordinate.
+REPRESENTATION INVARIANT:  The coordinates must have the following effect on the
+						   rectangle's sides: left<right and bottom<top.
 taken from Assignment2.pdf
 
 *)
@@ -19,7 +19,7 @@ REPRESENTATION CONVENTION: A quadtree with a root containing the extent e and
 						   subquadtree BR is represented by
 						   Qt(e, v, h, TL, TR, BL, BR);
 						   The empty quadtree is represented by EmptyQuadTree.
-REPRESENTATION INVARIANT: None.
+REPRESENTATION INVARIANT:  None.
 *)
 datatype quadTree = EmptyQuadTree |
 	            Qt of rectangle * rectangle list * rectangle list *
