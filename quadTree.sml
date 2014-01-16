@@ -4,7 +4,7 @@ DATATYPE REPRESENTATION: Represents a rectangle by four coordinates.
 						 left side's x-coordinate, top side's y coordinate,
 						 right side's x-coordinate, bottom 
 						 side's y-coordinate.
-INVARIANT REPRESENTATION: The coordinates must have the following effect on the 
+INVARIANT REPRESENTATION: The coordinates must have the following effect on the
 						  rectangle's sides: left<right and bottom<top.
 taken from Assignment2.pdf
 
@@ -12,9 +12,14 @@ taken from Assignment2.pdf
 datatype rectangle = Rect of int * int * int * int
 
 (*
-DATATYPE REPRESENTATION: Represents a tree with the extent of a rectangle
-						 at the root.
-INVARIANT REPRESENTATION: none
+REPRESENTATION CONVENTION: A quadtree with a root containing the extent e and
+						   two rectangle lists v and h, the top left
+						   subquadtree TL, the top right subquadtree TR,
+						   the bottom left subquadtree BL and the bottom right
+						   subquadtree BR is represented by
+						   Qt(e, v, h, TL, TR, BL, BR);
+						   The empty quadtree is represented by EmptyQuadTree.
+REPRESENTATION INVARIANT: None.
 *)
 datatype quadTree = EmptyQuadTree |
 	            Qt of rectangle * rectangle list * rectangle list *
@@ -27,7 +32,7 @@ exception ArgumentException of string;
 validRectangle(Rect(a,b,c,d,e))
 TYPE: rectangle -> bool 
 PRE: true
-POST: true if a<c and d<b, else false
+POST: true if a<c and d<b, else false.
 EXAMPLE: validRectangle(Rect(1,8,8,1)) = true
 *)
 
@@ -120,7 +125,7 @@ fun insert ( EmptyQuadTree, rectangle) = raise ArgumentException("insert called 
 (*
 query (q, x, y)
 TYPE: quadTree * int * int -> rectangle list
-PRE: true
+PRE: x,y must be inside the extent of q.
 POST: A list of all rectangles in the quadTree q that contain the point (x,y)
 EXAMPLE: query (Qt(Rect(1,50,50,1), [Rect(20,45,45,20)], [Rect(10,20,10,20)], EmptyQuadTree,
 	 	 EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), 25, 40) = [Rect(20,45,45,20)]
@@ -131,11 +136,10 @@ fun query (EmptyQuadTree, _, _) = []
   | query (Qt(Rect(left,top,right,bottom), vertical, horizontal, TL, TR, BL, BR), x, y) =
     let
     (*
-	pointInRect(a,b,c,d)
-	TYPE: Rect -> bool
+	pointInRect(r)
+	TYPE: rectangle -> bool
 	PRE: true
-	POST: true if the rectangle contains the coordinates x,y used when calling
-		  the query function.
+	POST: true if the rectangle r contains the coordinates x,y from the call of query.
 	EXAMPLE: pointInRect (Rect(1,4,4,1)) = true (given that x=2,y=3)
     *)
 	fun pointInRect (Rect(rl,rt,rr,rb)) = rl <= x andalso x < rr andalso rb <= y andalso y < rt
