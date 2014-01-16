@@ -1,9 +1,7 @@
 (*
-REPRESENTATION CONVENTION: Represents a rectangle by four coordinates. 
-						   Coordinates represents in order:
-						   left side's x-coordinate, top side's y coordinate,
-						   right side's x-coordinate, bottom 
-						   side's y-coordinate.
+REPRESENTATION CONVENTION: A rectangle with sides int left, int top,
+						   int right, int bottom is represented by
+						   Rect(left,top,right,bottom).
 REPRESENTATION INVARIANT:  The coordinates must have the following effect on the
 						   rectangle's sides: left<right and bottom<top.
 taken from Assignment2.pdf
