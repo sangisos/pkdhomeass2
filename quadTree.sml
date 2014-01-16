@@ -4,7 +4,8 @@ DATATYPE REPRESENTATION: Represents a rectangle by four coordinates.
 						 left side's x-coordinate, top side's y coordinate,
 						 right side's x-coordinate, bottom 
 						 side's y-coordinate.
-INVARIANT REPRESENTATION: none
+INVARIANT REPRESENTATION: The coordinates must have the following effect on the 
+						  rectangle's sides: left<right and bottom<top.
 taken from Assignment2.pdf
 
 *)
@@ -46,7 +47,7 @@ fun emptyQtree e = Qt(e,[],[],EmptyQuadTree,EmptyQuadTree,EmptyQuadTree,EmptyQua
 (* 
 insert (q, r)
 TYPE: quadTree * rectangle -> quadTree
-PRE: true
+PRE: rectangle r must be inside the extent of q.
 POST: The quadTree q with the rectangle r inserted at the correct location within it.
 EXAMPLE: insert(Qt(Rect(0,16,16,0), [], [], EmptyQuadTree, EmptyQuadTree,
 	  	 EmptyQuadTree, EmptyQuadTree), Rect(6,7,7,6)) =
