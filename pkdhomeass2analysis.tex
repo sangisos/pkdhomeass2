@@ -18,8 +18,8 @@
 
 \underline{validRectangle}
 
-since the validRectangle function only computes two comparisons, the time-complexity of the function is 
-$\Theta(I)$
+Since the validRectangle function only computes two comparisons, the time-complexity of the function is 
+$\Theta(1)$
 
 
 
@@ -50,13 +50,13 @@ $$T(n)=\left(\frac{n}{4}\right)+\theta(1)+\theta(|vertical@horizontal|)$$
 
 a=1, b=4 -> log_ba=0. c = 1
 
-
-
-________________________________________________________________________________________________________
-
 2,
 
 \underline{query complete and symmetrical tree:}
+
+When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\left(\frac{n}{4}\right)+2\theta(1)$$\\
+
+This is similar to the time complexity of insert and case 2 of the master theorem is applicable, hence the complexity $$T(n)=\theta(log n)$$.
 
 
 
