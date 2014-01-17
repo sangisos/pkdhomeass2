@@ -36,7 +36,7 @@ The insert function use constant time processes like comparisons and adding a he
 
 $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$
 
-Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means that $log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is: $$T(n)=\Theta(log\;n)$$
+Here we can apply the master theorem and see that $a=1, b=4, c=0$. This means that $log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is: $$T(n)=\Theta(log\;n)$$
 
 
 
@@ -48,8 +48,8 @@ The query function also uses comparisons which take constant time. Apart from th
 
 $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)+\Theta(|vertical@horizontal|)$$
 
-$a=1, b=4 \Rightarrow log_ba=0. c = 1$
-case 3? $\Theta(f(n))=\Theta(|vertical@horizontal|)$
+We can apply the master theorem and see that $a=1, b=4 \Rightarrow log_ba=0, c = 1$ This means that case 3 is applicable and the time complexity of the function is therefore:
+$$\Theta(f(n))=\Theta(|vertical@horizontal|)$$
 \\
 \textbf{2, query called with a complete and symmetrical tree}
 
