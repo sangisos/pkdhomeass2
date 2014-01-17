@@ -131,8 +131,8 @@ EXAMPLE: query (Qt(Rect(1,50,50,1), [Rect(20,45,45,20)], [Rect(10,20,10,20)], Em
 VARIANT: e
 *)
 
-fun query (EmptyQuadTree, _, _) = []
-  | query (Qt(Rect(left,top,right,bottom), vertical, horizontal, TL, TR, BL, BR), x, y) =
+fun query' (EmptyQuadTree, _, _, buffer) = buffer
+  | query' (Qt(Rect(left,top,right,bottom), vertical, horizontal, TL, TR, BL, BR), x, y, buffer) =
     let
     (*
 	pointInRect(r)
@@ -145,21 +145,24 @@ fun query (EmptyQuadTree, _, _) = []
 	val centerx = (left+right) div 2
 	val centery = (bottom+top) div 2
     in
-	(List.filter (pointInRect) (vertical @ horizontal)) @
-	(if x < centerx then
+	query'((if x < centerx then
 	    (if y < centery then
-		query(BL,x,y)
+		BL
 	    else if centery < y then
-		query(TL,x,y)
+		TL
 	    else
-		[])
+		EmptyQuadTree)
 	else if centerx < x then
 	    (if y < centery then
-		query(BR,x,y)
+		BR
 	    else if centery < y then
-		query(TR,x,y)
+		TR
 	    else
-		[])
+		EmptyQuadTree)
 	else
-	    [])
+	    EmptyQuadTree)
+	, x, y, (List.filter (pointInRect) (vertical @ horizontal)) @ buffer)
     end;
+
+fun query (EmptyQuadTree, _, _) = []
+  | query (q, x, y) = query'(q, x, y, [])
