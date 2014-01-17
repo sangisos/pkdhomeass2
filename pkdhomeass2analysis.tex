@@ -48,11 +48,9 @@ The query function also uses comparisons which take constant time. Apart from th
 
 $$T(n)=\left(\frac{n}{4}\right)+\theta(1)+\theta(|vertical@horizontal|)$$
 
-a=1, b=4 -> log_ba=0. c = 1
+$a=1, b=4 \Rightarrow log_ba=0. c = 1$
 
-2,
-
-\underline{query complete and symmetrical tree:}
+\textbf{2, query called with a complete and symmetrical tree:
 
 When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\left(\frac{n}{4}\right)+2\theta(1)$$\\
 
