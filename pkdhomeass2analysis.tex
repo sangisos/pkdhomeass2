@@ -34,7 +34,7 @@ This function only produces an empty quadtree with the extent of rectangle e. Th
 
 The insert function use constant time processes like comparisons and adding a head to a list. When it comes to the recursive calls, the extent in the original call is divided into four subextents, where only one is used in the next recursive call. This produces the following time complexity form:
 
-$$T(n)=\left(\frac{n}{4}\right)+\theta(1)$$
+$$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$
 
 Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means that $log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is: $$T(n)=\theta(log\;n)$$
 
@@ -46,15 +46,16 @@ Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means t
 
 The query function also uses comparisons which take constant time. Apart from that the recursive calls split the extent used originally into four quadrants and use one of them. It also uses list concatenation of all the rectangle lists on all levels of recursive calls. This produes the time complexity form:
 
-$$T(n)=\left(\frac{n}{4}\right)+\theta(1)+\theta(|vertical@horizontal|)$$
+$$T(n)=\left(\frac{n}{4}\right)+\Theta(1)+\Theta(|vertical@horizontal|)$$
 
 $a=1, b=4 \Rightarrow log_ba=0. c = 1$
-
+case 3? $\Theta(f(n))=\Theta(|vertical@horizontal|)$
+\\
 \textbf{2, query called with a complete and symmetrical tree}
 
-When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\left(\frac{n}{4}\right)+2\theta(1)$$\\
+When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\left(\frac{n}{4}\right)+2\Theta(1)$$\\
 
-This is similar to the time complexity of insert and case 2 of the master theorem is applicable, hence the complexity $$T(n)=\theta(log\;n)$$.
+This is similar to the time complexity of insert and case 2 of the master theorem is applicable, hence the complexity $$T(n)=\Theta(log\;n)$$.
 
 
 
