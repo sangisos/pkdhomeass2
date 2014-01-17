@@ -1,0 +1,64 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[parfill]{parskip}
+
+\title{Analysis of rectangles and quadtrees}
+\author{Erik Englund, 921016-4530 and Alexander Andersson, ååmmdd-xxxx}
+
+\begin{document}
+\maketitle
+
+
+
+validRectangle
+
+since the validRectangle function only computes two comparisons, the time-complexity of the function is 
+$\Theta(I)$
+
+
+
+
+emptyQtree
+
+This function only produces an empty quadtree with the extent of rectangle e. Thus the time-complexity of the function is constant $\Theta(I)$
+
+
+
+insert
+
+The insert function use constant time processes like comparisons and adding a head to a list. Then when it comes to the recursive calls, the extent in the original call is divided into four subextents, where only one is used in the next recursive call. This produces the following time complexity form:
+
+$$T(n)=\frac{n}{4}+\theta(1)$$
+
+Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means that $log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is $T(n)=\theta(log n)$
+
+
+
+
+
+query
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
