@@ -36,7 +36,7 @@ The insert function use constant time processes like comparisons and adding a he
 
 $$T(n)=\left(\frac{n}{4}\right)+\theta(1)$$
 
-Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means that $log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is: $$T(n)=\theta(log n)$$
+Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means that $log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is: $$T(n)=\theta(log\;n)$$
 
 
 
@@ -54,7 +54,7 @@ $a=1, b=4 \Rightarrow log_ba=0. c = 1$
 
 When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\left(\frac{n}{4}\right)+2\theta(1)$$\\
 
-This is similar to the time complexity of insert and case 2 of the master theorem is applicable, hence the complexity $$T(n)=\theta(log n)$$.
+This is similar to the time complexity of insert and case 2 of the master theorem is applicable, hence the complexity $$T(n)=\theta(log\;n)$$.
 
 
 
