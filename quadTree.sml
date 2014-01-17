@@ -121,11 +121,11 @@ fun insert ( EmptyQuadTree, rectangle) =
     end;
 
 (* query' (q as Qt(e, v, h, TL, TR, BL, BR), x, y, buffer)
-   TYPE: quadTree * int * int -> rectangle list
+   TYPE: quadTree * int * int * rectangle list -> rectangle list
    PRE: x,y must be inside the extent e.
    POST: A list of all rectangles in the quadTree q that contain the point (x,y)
    EXAMPLE: query (Qt(Rect(1,50,50,1), [Rect(20,45,45,20)], [Rect(10,20,10,20)],
-        EmptyQuadTree, EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), 25, 40) =
+        EmptyQuadTree, EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), 25, 40, []) =
             [Rect(20,45,45,20)]
 *)
 (* VARIANT: e *)
