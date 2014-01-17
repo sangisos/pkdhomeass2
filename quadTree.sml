@@ -59,7 +59,7 @@ fun emptyQtree e =
                     ), EmptyQuadTree, EmptyQuadTree
                 ), EmptyQuadTree)
 *)
-(* VARIANT: e *)
+(* VARIANT: min(|r-l|,|t-b|) where r,t,l,b are the sides of the extent of q*)
 fun insert ( EmptyQuadTree, rectangle) =
     raise ArgumentException("insert called with empty quad tree.")
   | insert ( q as Qt(e, vertical, horizontal, TL, TR, BL, BR), rectangle) =
@@ -120,7 +120,7 @@ fun insert ( EmptyQuadTree, rectangle) =
             )
     end;
 
-(* query' (q as Qt(e, v, h, TL, TR, BL, BR), x, y, buffer)
+(* query' (q as Qt(e as Rect(l,t,r,b), v, h, TL, TR, BL, BR), x, y, buffer)
    TYPE: quadTree * int * int * rectangle list -> rectangle list
    PRE: x,y must be inside the extent e.
    POST: A list of all rectangles in the quadTree q that contain the point (x,y)
@@ -128,7 +128,7 @@ fun insert ( EmptyQuadTree, rectangle) =
         EmptyQuadTree, EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), 25, 40, []) =
             [Rect(20,45,45,20)]
 *)
-(* VARIANT: e *)
+(* VARIANT: min(|r-l|,|t-b|) *)
 fun query' (EmptyQuadTree, _, _, buffer) = buffer
   | query' (Qt(Rect(left,top,right,bottom), vertical, horizontal,
         TL, TR, BL, BR), x, y, buffer) =
@@ -170,7 +170,7 @@ fun query' (EmptyQuadTree, _, _, buffer) = buffer
     end;
 (* query (q, x, y)
    TYPE: quadTree * int * int -> rectangle list
-   PRE: x,y must be inside the extent e.
+   PRE: x,y must be inside the extent of q.
    POST: A list of all rectangles in the quadTree q that contain the point (x,y)
    EXAMPLE: query (Qt(Rect(1,50,50,1), [Rect(20,45,45,20)], [Rect(10,20,10,20)],
         EmptyQuadTree, EmptyQuadTree, EmptyQuadTree, EmptyQuadTree), 25, 40) =
