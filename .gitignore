@@ -85,6 +85,7 @@ build/
 *.log
 *.aux
 *.out
+*.dvi
 
 # Visual C++ cache files
 ipch/
