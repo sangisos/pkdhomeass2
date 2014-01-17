@@ -14,9 +14,9 @@
 \begin{document}
 \maketitle
 
-\textbf{1, Time complexity of validRectangle, emptyQtree, insert and query}\\
+\section{Time complexity of validRectangle, emptyQtree, insert and query}
 
-\underline{validRectangle}
+\subsection{validRectangle}
 
 Since the validRectangle function only computes two comparisons, the time-complexity of the function is 
 $\Theta(1)$
@@ -24,13 +24,13 @@ $\Theta(1)$
 
 
 
-\underline{emptyQtree}
+\subsection{emptyQtree}
 
 This function only produces an empty quadtree with the extent of rectangle e. Thus the time-complexity of the function is constant $\Theta(1)$
 
 
 
-\underline{insert}
+\subsection{insert}
 
 The insert function use constant time processes like comparisons and adding a head to a list. When it comes to the recursive calls, the extent in the original call is divided into four subextents, where only one is used in the next recursive call. This produces the following time complexity form:
 
@@ -42,7 +42,7 @@ Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means t
 
 
 
-\underline{query}
+\subsection{query}
 
 The query function also uses comparisons which take constant time. Apart from that the recursive calls split the extent used originally into four quadrants and use one of them. It also uses list concatenation of all the rectangle lists on all levels of recursive calls. This produes the time complexity form:
 
@@ -51,7 +51,7 @@ $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)+\Theta(|vertical@horizontal|)$$
 $a=1, b=4 \Rightarrow log_ba=0. c = 1$
 case 3? $\Theta(f(n))=\Theta(|vertical@horizontal|)$
 \\
-\textbf{2, query called with a complete and symmetrical tree}
+\section{query called with a complete and symmetrical tree}
 
 When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\left(\frac{n}{4}\right)+2\cdot\Theta(1)$$\\
 
