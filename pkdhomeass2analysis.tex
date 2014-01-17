@@ -9,7 +9,7 @@
 \usepackage[parfill]{parskip}
 
 \title{Analysis of rectangles and quadtrees}
-\author{Erik Englund, 921016-4530 and Alexander Andersson, ååmmdd-xxxx}
+\author{Erik Englund, 921016-4530 and Alexander Andersson, 860616-1530}
 
 \begin{document}
 \maketitle
@@ -36,7 +36,7 @@ The insert function use constant time processes like comparisons and adding a he
 
 $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$
 
-Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means that $log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is: $$T(n)=\Theta(log\;n)$$
+Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means that $\log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is: $$T(n)=\Theta(\log n)$$
 
 
 
@@ -46,16 +46,23 @@ Here we can apply the master theorem and see that: $a=1, b=4, c=0$. This means t
 
 The query function also uses comparisons which take constant time. Apart from that the recursive calls split the extent used originally into four quadrants and use one of them. It also uses list concatenation of all the rectangle lists on all levels of recursive calls. This produes the time complexity form:
 
-$$T(n)=\left(\frac{n}{4}\right)+\Theta(1)+\Theta(|vertical@horizontal|)$$
+$$T(n)=\left(\frac{n}{4}\right)+\Theta(1)+\Theta(|\text{vertical@horizontal}|)$$
 
-$a=1, b=4 \Rightarrow log_ba=0. c = 1$
-case 3? $\Theta(f(n))=\Theta(|vertical@horizontal|)$
-\\
+As vertical and horizontal are independet from $n$, we assume them to be constant. $\Theta(|\text{vertical@horizontal}|) = \Theta(1)$\\
+
+\[
+\left.
+\begin{array}{l}
+  a=1, b=4 \Rightarrow \log_ba = 0 \\
+  \Theta(f(n)) = \Theta(|\text{vertical@horizontal}|) = \Theta(1) \Rightarrow c = 0
+\end{array} \right\} \Rightarrow \text{Case 2.}
+\]
+
 \section{query called with a complete and symmetrical tree}
 
 When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\left(\frac{n}{4}\right)+2\cdot\Theta(1)$$\\
 
-This is similar to the time complexity of insert and case 2 of the master theorem is applicable, hence the complexity $$T(n)=\Theta(log\;n)$$
+This is similar to the time complexity of insert and case 2 of the master theorem is applicable, hence the complexity $$T(n)=\Theta(\log n)$$
 
 
 
