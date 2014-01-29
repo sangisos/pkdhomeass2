@@ -48,7 +48,7 @@ The query function also uses comparisons which take constant time. Apart from th
 
 $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)+\Theta(|\text{vertical@horizontal}|)$$
 
-As vertical and horizontal are independet from $n$, we assume them to be constant. $\Theta(|\text{vertical@horizontal}|) = \Theta(1)$\\
+As vertical and horizontal are independent from $n$, we assume them to be constant. $\Theta(|\text{vertical@horizontal}|) = \Theta(1)$\\
 
 \[
 \left.
@@ -58,6 +58,10 @@ As vertical and horizontal are independet from $n$, we assume them to be constan
 \end{array} \right\} \Rightarrow \text{Case 2.}
 \]
 
+The time complexity of query is therefore: $$T(n)=\Theta(\log n)$$
+
+\\
+\\
 \section{query called with a complete and symmetrical tree}
 
 When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\left(\frac{n}{4}\right)+2\cdot\Theta(1)$$\\
