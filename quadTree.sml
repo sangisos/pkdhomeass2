@@ -1,8 +1,7 @@
 (* REPRESENTATION CONVENTION: A rectangle with sides left l, top t,
                               right r and bottom b is represented by
                               Rect(l, t, r, b).
-   REPRESENTATION INVARIANT:  The coordinates must have the following effect on
-                              the rectangle's sides: left<right and bottom<top.
+   REPRESENTATION INVARIANT:  left<right, and bottom<top. v and
    taken from Assignment2.pdf
 *)
 datatype rectangle = Rect of int * int * int * int
@@ -83,10 +82,10 @@ fun insert ( EmptyQuadTree, rectangle) =
                     Int.toString(top) ^ "," ^
                     Int.toString(right) ^ "," ^
                     Int.toString(bottom) ^ ")")
-        else if rectLeft <= centerx andalso centerx < rectRight then
-            Qt(e, rectangle::vertical, horizontal, TL, TR, BL, BR)
         else if rectBottom <= centery andalso centery < rectTop then
             Qt(e, vertical, rectangle::horizontal, TL, TR, BL, BR)
+        else if rectLeft <= centerx andalso centerx < rectRight then
+            Qt(e, rectangle::vertical, horizontal, TL, TR, BL, BR)
         else if rectRight <= centerx then (
             if rectTop <= centery then
                 Qt(e, vertical, horizontal, TL, TR, insert(
