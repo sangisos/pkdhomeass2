@@ -1,0 +1,59 @@
+Analysen från johannes föreläsning.
+
+
+query worst case:
+Varje Qt har k rektanglar.
+
+välj ett n, t.ex. "n är antalet noder i trädet"
+
+T(n) =                Theta(1)                +              T(n/4)
+                         |                                     |
+Kostnad för filter, append (@), som är linjära m.a.p. k        |
+                                                               |
+                      Eftersom antalet noder i en subnod i ett BALANSERAT träd är (n-1)/4 , förenklat t. n/4
+
+
+Första queryfallet:
+k = djupet på trädet (worst-case konstant då arean är konstant enl. uppg.)
+n = antalet rektanglar
+n_i = antalet rektanglar på djup i
+
+en rekution på djupet av trädet trots att det är konstant.
+
+T(0) =   Theta(n_0)
+T(i) =             Theta(n_i)                +           T(i-1)
+                      |                                    |
+               filter, append (@)                          |
+                                               Rekursion en nivå djupare
+induktionsbevis medför =>
+T(k) = Theta(Summan av (alla våningar) n_i med i från 0 till k) = Theta(n)
+VIKTIGT: Se till att förklara vad alla variabler motsvarar.
+
+
+
+
+
+
+Tobias:
+insert:
+rekurserar över extentens storlek
+varje steg är konstant (jämförelser och sådant)
+värsta fallet: en 1x1 rektangel som missar alla kors till extenten är 1x1
+delar extenten i 4 för varje rekursion.
+
+n = extentens area
+T(n) = T(n/4) + Theta(1)
+         |
+    Theta(log n)   enligt master theorem, men n (extentens area) konstant
+         |         enligt uppgift ger:
+      Theta(1)     Konstant tid.
+Worst case: trädet är log n djupt. (n antalet noder?)
+Som sagt: säg vad n är och varför det är konstant.
+
+
+query:
+worst case: alla rektanglar i hela trädet ligger längs den "väg" vi går ner genom trädet.
+Rekursera över alla nivåer = n i trädet:
+T(n) = T(n-1) + r_n,   där r_n är alla rektanglar.
+\sum_i r_i
+T(n) = Theta(l) där l är längden av listan av alla rektanglar.
