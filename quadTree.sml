@@ -1,7 +1,7 @@
 (* REPRESENTATION CONVENTION: A rectangle with sides left l, top t,
                               right r and bottom b is represented by
                               Rect(l, t, r, b).
-   REPRESENTATION INVARIANT:  left<right, and bottom<top. v and
+   REPRESENTATION INVARIANT:  l<r, b<t.
    taken from Assignment2.pdf
 *)
 datatype rectangle = Rect of int * int * int * int
