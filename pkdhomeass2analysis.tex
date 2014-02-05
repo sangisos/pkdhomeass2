@@ -32,13 +32,9 @@ This function only produces an empty quadtree with the extent of rectangle e. Th
 
 \subsection{insert}
 
-The insert function use constant time processes like comparisons and adding a head to a list. When it comes to the recursive calls, the extent in the original call is divided into four subextents, where only one is used in the next recursive call. This produces the following time complexity form:
+The insert function use constant time processes like comparisons and adding a head to a list (only one element, the rectangle that is to be inserted). This is the case throughout the whole function, including the recursive calls. It follows that the time complexity of insert is: $$T(n)=\Theta(1)$$
 
 $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$
-
-Here we can apply the master theorem and see that $a=1, b=4, c=0$. This means that $\log_ba=0 = c$ and case 2 is applicable. It follows that the time complexity of insert is: $$T(n)=\Theta(\log n)$$
-
-
 
 
 
