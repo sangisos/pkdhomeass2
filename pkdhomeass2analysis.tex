@@ -32,13 +32,27 @@ This function only produces an empty quadtree with the extent of rectangle e. Th
 
 \subsection{insert}
 
-The insert function use constant time processes like comparisons and adding a head to a list (only one element, the rectangle that is to be inserted). This is the case throughout the whole function, including the recursive calls. It follows that the time complexity of insert is therefore: $$T(n)=\Theta(1)$$ 
+The insert function use constant time processes like comparisons and adding a head to a list (only one element, the rectangle that is to be inserted). This is the case throughout the whole function, including the recursive calls. Assuming that the root of the tree has a constant extent n, we can produce the following time-complexity formula:
 
 $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$
+
+Here we can apply the master theorem and the result is that $T(n)=\Thetalog n$. Since n is constant, the time complexity for insert is therefore also constant $T(n) = \Theta(1)$.
 
 
 
 \subsection{query}
+
+
+Given that $k$ is the depth of the tree, which in this case is constant since the extent is constant (given from assignment), $n$ the number of rectangles and $n_i$ the number of rectangles at depth $i$, we can analyze the time complexity of the function as follows:
+
+In worst case, we will find all rectangles along the path we move down the tree. At every level, the time complexity is as follows: 
+
+$T(0)= \Theta(n_0)$
+$T(i)= \Theta(n_i) + \Theta(i-1)$
+
+The time complexity is therefore the sum of all levels from 0 to k, which in this case is constant.
+
+
 
 The query function also uses comparisons which take constant time. Apart from that the recursive calls split the extent used originally into four quadrants and use one of them. It also uses list concatenation of all the rectangle lists on all levels of recursive calls. This produes the time complexity form:
 
