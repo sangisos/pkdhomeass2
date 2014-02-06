@@ -32,7 +32,7 @@ This function only produces an empty quadtree with the extent of rectangle e. Th
 
 \subsection{insert}
 
-The insert function use constant time processes like comparisons and adding a head to a list (only one element, the rectangle that is to be inserted). This is the case throughout the whole function, including the recursive calls. It follows that the time complexity of insert is therefore: $$T(n)=\Theta(1)$$ 
+The insert function use constant time processes like comparisons and adding a head to a list (only one element, the rectangle that is to be inserted). This is the case throughout the whole function, including the recursive calls. It follows that the time complexity of insert is therefore in worst case the height of the tree where the last node has the extent that on one way is less then 1.: $$T(n)=\Theta(1)$$ 
 
 $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$
 
@@ -60,11 +60,18 @@ The time complexity of query is therefore: $$T(n)=\Theta(\log n)$$
 \\
 \section{query called with a complete and symmetrical tree}
 
-When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call. This means that the time complexity form will be the following: $$T(n)=\Theta(1)$$
+When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call giving us $\Theta(1)$ time-complexity on every level. This means that with the size of the extent as $n$, and with the size of the extent being divided in 4 by every recursion, the time complexity form will be the following:
 
- $$T(n)=\left(\frac{n}{4}\right)+2\cdot\Theta(1)$$\\
+ $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$\\
 
+which by the master theorem gives us:
 
+ $$T(n)=\Theta(\log n)$$\\
 
+But, as the size of the extent $n$ is a constant, as said in the assignment, this gives us:
+
+ $$T(n)=\Theta(\log 1)=\Theta(1)$$\\
+
+constant time.
 
 \end{document}
