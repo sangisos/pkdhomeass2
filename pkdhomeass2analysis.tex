@@ -32,11 +32,11 @@ This function only produces an empty quadtree with the extent of rectangle e. Th
 
 \subsection{insert}
 
-The insert function use constant time processes like comparisons and adding a head to a list (only one element, the rectangle that is to be inserted). This is the case throughout the whole function, including the recursive calls. Assuming that the root of the tree has a constant extent n, we can produce the following time-complexity formula:
+The insert function use constant time processes like comparisons and adding a head to a list (only one element, the rectangle that is to be inserted). This is the case throughout the whole function, including the recursive calls. Assuming that the root of the tree has a constant extent $n$, we can produce the following time-complexity formula:
 
-$$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$
+$$T(n)=T\left(\frac{n}{4}\right)+\Theta(1)$$
 
-Here we can apply the master theorem and the result is that $T(n)=\Thetalog n$. Since n is constant, the time complexity for insert is therefore also constant $T(n) = \Theta(1)$.
+Here we can apply the master theorem and the result is that $T(n)=\Theta(n)$. Since $n$ is constant, the time complexity for insert is therefore also constant $T(n) = \Theta(1)$.
 
 
 
