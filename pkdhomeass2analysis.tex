@@ -48,7 +48,7 @@ Given that $k$ is the depth of the tree, which in this case is constant since th
 In worst case, we will find all rectangles along the path we move down the tree. At every level, the time complexity is as follows: 
 
 $T(0)= \Theta(n_0)$\\
-$T(i)= \Theta(n_i) + \Theta(i-1)$
+$T(i)= \Theta(n_i) + T(i-1)$
 
 The time complexity is therefore the sum of all levels from 0 to k, which in this case is constant.
 
