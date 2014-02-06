@@ -47,6 +47,7 @@ T(n) = T(n/4) + Theta(1)
     Theta(log n)   enligt master theorem, men n (extentens area) konstant
          |         enligt uppgift ger:
       Theta(1)     Konstant tid.
+
 Worst case: trädet är log n djupt. (n antalet noder?)
 Som sagt: säg vad n är och varför det är konstant.
 
