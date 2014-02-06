@@ -43,49 +43,31 @@ Here we can apply the master theorem and the result is that $T(n)=\Theta(n)$. Si
 \subsection{query}
 
 
-Given that $k$ is the depth of the tree, which in this case is constant since the extent is constant (given from assignment), $n$ the number of rectangles and $n_i$ the number of rectangles at depth $i$, we can analyze the time complexity of the function as follows:
+Let $k$ be the depth of the tree. In this case $k$ is constant since depth is dependant on the extent, which is constant (given from assignment). Let $n$ be the total number of rectangles and $n_i$ the number of rectangles at depth $i$.
+The query function uses comparisons which take constant time. It also uses list concatenation of all the rectangle lists on each level in the recursive calls. In worst case, we will find all rectangles in the whole tree $n$ along the path we move down the tree. As the concationation at level $i$ is linear to the number of rectangles at level $i$, the time complexity is as follows:
 
-In worst case, we will find all rectangles along the path we move down the tree. At every level, the time complexity is as follows: 
+$$T(i) = T(i-1) + \Theta(n_i)$$
 
-$T(0)= \Theta(n_0)$\\
-$T(i)= \Theta(n_i) + T(i-1)$
+Because the depth of the tree $k$ is constant, the time complexity is therefore the sum of all rectangles on levels from $k$ to $0$.
 
-The time complexity is therefore the sum of all levels from $k$ to $0$ , which in this case is constant.
+$$T(i) = \Theta(\sum_{i=0}^kn_i) = \Theta(n) $$
 
+Therefore, in worst case the time complexity is linear to the number of rectangles in the tree $n$.
 
-
-The query function also uses comparisons which take constant time. Apart from that the recursive calls split the extent used originally into four quadrants and use one of them. It also uses list concatenation of all the rectangle lists on all levels of recursive calls. This produes the time complexity form:
-
-$$T(n)=\left(\frac{n}{4}\right)+\Theta(1)+\Theta(|\text{vertical@horizontal}|)$$
-
-As vertical and horizontal are independent from $n$, we assume them to be constant. $\Theta(|\text{vertical@horizontal}|) = \Theta(1)$\\
-
-\[
-\left.
-\begin{array}{l}
-  a=1, b=4 \Rightarrow \log_ba = 0 \\
-  \Theta(f(n)) = \Theta(|\text{vertical@horizontal}|) = \Theta(1) \Rightarrow c = 0
-\end{array} \right\} \Rightarrow \text{Case 2.}
-\]
-
-The time complexity of query is therefore: $$T(n)=\Theta(\log n)$$
-
-\\
-\\
 \section{query called with a complete and symmetrical tree}
 
 When every level of the quadtree contains the exact same amount of rectangles, the concatenation of the lists will take constant time in every recursive call giving us $\Theta(1)$ time-complexity on every level. This means that with the size of the extent as $n$, and with the size of the extent being divided in 4 by every recursion, the time complexity form will be the following:
 
- $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$\\
+ $$T(n)=\left(\frac{n}{4}\right)+\Theta(1)$$
 
 which by the master theorem gives us:
 
- $$T(n)=\Theta(\log n)$$\\
+ $$T(n)=\Theta(\log n)$$
 
 But, as the size of the extent $n$ is a constant, as said in the assignment, this gives us:
 
- $$T(n)=\Theta(\log 1)=\Theta(1)$$\\
+ $$T(n)=\Theta(\log 1)=\Theta(1)$$
 
-constant time.
+constant time!
 
 \end{document}
